@@ -2,6 +2,7 @@ import { signInWithPopup } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
+import { Register } from "./Register";
 
 export function Login() {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ export function Login() {
     setError("");
     try {
       await login(user.email, user.password);
+
       navigate("/");
     } catch (error) {
       alert(error);
@@ -29,8 +31,8 @@ export function Login() {
 
   const handleGoogleSignin = async () => {
     try {
-      throw new Error("Google error")
       await loginGoogle();
+      navigate("/");
     } catch (error) {
       console.error(error.message);
     }
@@ -59,6 +61,15 @@ export function Login() {
         />
         <br /> <br />
         <button>Login</button>
+        <br />
+        <button
+          onClick={() => {
+            navigate("/register");
+          }}
+        >
+          Register
+        </button>
+        <br />
         <button onClick={handleGoogleSignin}>Login with Google</button>
       </form>
     </div>
