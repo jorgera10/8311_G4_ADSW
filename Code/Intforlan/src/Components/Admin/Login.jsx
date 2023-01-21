@@ -1,7 +1,7 @@
 import { signInWithPopup } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Context/AuthContext";
+import { useAuth } from "../../Context/AuthContext";
 import { Register } from "./Register";
 
 export function Login() {
@@ -23,7 +23,7 @@ export function Login() {
     try {
       await login(user.email, user.password);
 
-      navigate("/");
+      navigate("/adminHome");
     } catch (error) {
       alert(error);
     }
@@ -32,7 +32,7 @@ export function Login() {
   const handleGoogleSignin = async () => {
     try {
       await loginGoogle();
-      navigate("/");
+      navigate("/adminHome");
     } catch (error) {
       console.error(error.message);
     }
@@ -64,7 +64,7 @@ export function Login() {
         <br />
         <button
           onClick={() => {
-            navigate("/register");
+            navigate("/adminRegister");
           }}
         >
           Register

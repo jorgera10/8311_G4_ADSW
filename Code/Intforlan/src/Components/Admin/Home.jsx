@@ -6,8 +6,8 @@ import {
   getDocs,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../Context/AuthContext";
-import { db } from "./firebase";
+import { useAuth } from "../../Context/AuthContext";
+import { db } from "../Firebase/firebase";
 import { AiOutlineDelete } from "react-icons/Ai";
 
 export function Home() {
@@ -116,11 +116,12 @@ export function Home() {
       {products.map((produc) => {
         return (
           <div key={produc.id}>
+            <img src={produc.imagen} height="100px" />
             <h2>{produc.nameProduct}</h2>
             <p>{produc.categoria}</p>
             <p>{produc.marca}</p>
             <p>{produc.precio}</p>
-            <p>{produc.imagen}</p>
+
             <AiOutlineDelete
               onClick={() => {
                 deleteProduct(produc.id);

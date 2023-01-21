@@ -1,7 +1,7 @@
 import { signInWithPopup } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Context/AuthContext";
+import { useAuth } from "../../Context/AuthContext";
 
 export function Register() {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ export function Register() {
     setError("");
     try {
       await singUp(user.email, user.password);
-      navigate("/");
+      navigate("/adminHome");
     } catch (error) {
       alert(error);
     }
