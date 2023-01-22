@@ -1,31 +1,18 @@
-import { collection, getDocs } from "firebase/firestore";
 import "./style.css";
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../../Context/AuthContext";
-import { db } from "../Firebase/firebase";
 import { listCategories } from "../../Context/listCategories";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { ClientProducts } from "./ClientProducts";
+import { useNavigate } from "react-router-dom";
 
 export function ClientHome() {
-  const { logout, loading, user } = useAuth();
-  const [products, setProducts] = useState([]);
-  const productCollection = collection(db, "products");
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const getProducts = async () => {
-      const data = await getDocs(productCollection);
-      setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getProducts();
-  }, [products]);
+  const [categoriaElegida, setCategoriaElegida] = useState("");
 
-  const handleLogout = async () => {
-    try {
-      await logout();
-    } catch (error) {
-      console.error(error);
-    }
+  const vewCategory = (categoryName) => {
+    console.log(categoryName);
+    <ClientProducts categoryProduct={categoryName}></ClientProducts>;
   };
 
   return (
@@ -45,34 +32,26 @@ export function ClientHome() {
               {category.icon}
               <Card.Body>
                 <Card.Title>
-                  <h2 className="text-3xl title" >{category.category}</h2>
+                  <h2 className="text-3xl title">{category.category}</h2>
                 </Card.Title>
                 <br />
                 <Card.Text className="text-justify text">
                   {category.description}
                 </Card.Text>
-
                 <br />
-                <button onClick={handleLogout}>See Products</button>
+                <button
+                  onClick={() => {
+                    setCategoriaElegida(category.id);
+                    vewCategory(categoriaElegida);
+                  }}
+                >
+                  View Products
+                </button>
               </Card.Body>
             </Card>
           );
         })}
       </div>
-
-      {/* {products.map((produc) => {
-        return (
-          <>
-            <div key={produc.id}>
-              <img src={produc.imagen} height="150px" />
-              <h2>{produc.nameProduct}</h2>
-              <p>{produc.categoria}</p>
-              <p>{produc.marca}</p>
-              <p>{produc.precio}</p>
-            </div>
-          </>
-        );
-      })} */}
     </div>
   );
 }

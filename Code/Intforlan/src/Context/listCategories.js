@@ -21,7 +21,7 @@ export const listCategories = [
   },
   {
     id: 4,
-    category: "Laptops",
+    category: "Laptop",
     description:
       " ¿Necesitas una computadora? Aquí en Intforlan encontraras las mejores computadoras del mercado a un precio increible, ¡Que esperas para llevarte la tuya!",
   },

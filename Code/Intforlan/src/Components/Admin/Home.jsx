@@ -113,18 +113,18 @@ export function Home() {
         <button>Send</button>
       </form>
       <br />
-      {products.map((produc) => {
+      {products.map((product) => {
         return (
-          <div key={produc.id}>
-            <img src={produc.imagen} height="100px" />
-            <h2>{produc.nameProduct}</h2>
-            <p>{produc.categoria}</p>
-            <p>{produc.marca}</p>
-            <p>{produc.precio}</p>
+          <div key={product.id}>
+            <img src={product.imagen} height="100px" />
+            <h2>{product.nameProduct}</h2>
+            <p>{product.categoria}</p>
+            <p>{product.marca}</p>
+            <p>{product.precio}</p>
 
             <AiOutlineDelete
               onClick={() => {
-                deleteProduct(produc.id);
+                deleteProduct(product.id);
               }}
             ></AiOutlineDelete>
           </div>

@@ -9,6 +9,7 @@ import { AuthContextProvider } from "./Context/AuthContext";
 import { ProtectedRoute } from "./Components/Admin/ProtectedRoute";
 import Notfound from "./Components/Notfound";
 import { ClientHome } from "./Components/Client/ClientHome";
+import { ClientProducts } from "./Components/Client/ClientProducts";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             }
           />
           <Route path="/adminRegister" element={<Register />} />
+          <Route path="/products" element={<ClientProducts />} />
           <Route path="*" element={<Notfound />} />
         </Routes>
       </AuthContextProvider>
