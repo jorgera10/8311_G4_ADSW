@@ -8,13 +8,6 @@ import { useNavigate } from "react-router-dom";
 export function ClientHome() {
   const navigate = useNavigate();
 
-  const [categoriaElegida, setCategoriaElegida] = useState("");
-
-  const vewCategory = (categoryName) => {
-    console.log(categoryName);
-    <ClientProducts categoryProduct={categoryName}></ClientProducts>;
-  };
-
   return (
     <div>
       <h1>Welcome to Intforlan</h1>
@@ -41,8 +34,9 @@ export function ClientHome() {
                 <br />
                 <button
                   onClick={() => {
-                    setCategoriaElegida(category.id);
-                    vewCategory(categoriaElegida);
+                    <ClientProducts
+                      categoryProduct={category.category}
+                    ></ClientProducts>;
                   }}
                 >
                   View Products
