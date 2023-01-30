@@ -69,6 +69,7 @@ export function Login() {
         >
           Register
         </button>
+        <button type="Reset">Clear</button>
         <br />
         <button onClick={handleGoogleSignin}>Login with Google</button>
       </form>
