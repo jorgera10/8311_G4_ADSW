@@ -51,6 +51,7 @@ export function Register() {
         />
         <br /> <br />
         <button>Send</button>
+        <button type="Reset">Clear</button>
       </form>
     </div>
   );

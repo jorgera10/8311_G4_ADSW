@@ -115,8 +115,8 @@ export function Home() {
           }}
         />
         <br />
-        <button>Send</button>
         <button type="Reset">Clear</button>
+        <button>Send</button>
       </form>
       <br />
       {products.map((product) => {
