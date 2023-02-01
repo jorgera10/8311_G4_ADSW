@@ -23,7 +23,7 @@ export function Home() {
   };
   //----------------------CRUD------------------------
   const [products, setProducts] = useState([]);
-  const productCollection = collection(db, "products");
+  const productCollection = collection(db, "productos");
 
   const [NewNameProduct, setNewNameProduct] = useState("");
   const [NewCategoria, setNewCategoria] = useState("");
@@ -41,7 +41,7 @@ export function Home() {
 
   const createProduct = async () => {
     await addDoc(productCollection, {
-      nameProduct: NewNameProduct,
+      productName: NewNameProduct,
       categoria: NewCategoria,
       marca: NewMarca,
       precio: NewPrecio,
@@ -51,7 +51,7 @@ export function Home() {
   };
 
   const deleteProduct = async (id) => {
-    const ProductDoc = doc(db, "products", id);
+    const ProductDoc = doc(db, "productos", id);
     const confirmDelete = confirm(
       `Are you sure you want to eliminate this product? ${id}`
     );
@@ -70,6 +70,7 @@ export function Home() {
       <br />
       <form onSubmit={handleCreate}>
         <input
+          required
           type="text"
           name="productName"
           placeholder="Product name"
@@ -78,6 +79,7 @@ export function Home() {
           }}
         />
         <input
+          required
           type="text"
           name="categoria"
           placeholder="Categoria"
@@ -86,6 +88,7 @@ export function Home() {
           }}
         />
         <input
+          required
           type="text"
           name="marca"
           placeholder="Marca"
@@ -94,6 +97,7 @@ export function Home() {
           }}
         />
         <input
+          required
           type="text"
           name="precio"
           placeholder="Precio"
@@ -102,6 +106,7 @@ export function Home() {
           }}
         />
         <input
+          required
           type="text"
           name="imagen"
           placeholder="Imagen"
@@ -118,7 +123,7 @@ export function Home() {
         return (
           <div key={product.id}>
             <img src={product.imagen} height="100px" />
-            <h2>{product.nameProduct}</h2>
+            <h2>{product.productName}</h2>
             <p>{product.categoria}</p>
             <p>{product.marca}</p>
             <p>{product.precio}</p>

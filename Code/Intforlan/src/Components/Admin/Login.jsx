@@ -25,7 +25,7 @@ export function Login() {
 
       navigate("/adminHome");
     } catch (error) {
-      alert(error);
+      alert("hoallkhk");
     }
   };
 
@@ -34,7 +34,7 @@ export function Login() {
       await loginGoogle();
       navigate("/adminHome");
     } catch (error) {
-      console.error(error.message);
+      console.log(error.message);
     }
   };
   return (
@@ -49,6 +49,7 @@ export function Login() {
           placeholder="example@company.com"
           id="email"
           onChange={handleChange}
+          required
         />
         <br />
         <label htmlFor="password">Password</label>
@@ -58,6 +59,7 @@ export function Login() {
           placeholder="Password"
           id="password"
           onChange={handleChange}
+          required
         />
         <br /> <br />
         <button>Login</button>

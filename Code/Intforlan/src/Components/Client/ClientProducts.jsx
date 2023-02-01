@@ -29,7 +29,7 @@ export function ClientProducts({ categoryProduct }) {
               <div key={product.id}>
                 <hr />
                 <img src="" />
-                <h2>{product.nameProduct}</h2>
+                <h2>{product.productName}</h2>
                 <p>{product.categoria}</p>
                 <p>{product.marca}</p>
                 <p>{product.precio}</p>
