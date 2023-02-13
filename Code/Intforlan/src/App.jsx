@@ -2,7 +2,6 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./Components/Admin/Home";
 import { Login } from "./Components/Admin/Login";
 import { Register } from "./Components/Admin/Register";
 import { AuthContextProvider } from "./Context/AuthContext";
@@ -10,6 +9,7 @@ import { ProtectedRoute } from "./Components/Admin/ProtectedRoute";
 import Notfound from "./Components/Notfound";
 import { ClientHome } from "./Components/Client/ClientHome";
 import { ClientProducts } from "./Components/Client/ClientProducts";
+import { Home } from "./Components/Admin/Home";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
             path="/adminHome"
             element={
               <ProtectedRoute>
-                <Home />
+                <Home/>
               </ProtectedRoute>
             }
           />
