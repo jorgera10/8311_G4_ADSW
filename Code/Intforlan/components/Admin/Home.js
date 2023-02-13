@@ -5,22 +5,21 @@ import {
   doc,
   getDocs,
 } from "firebase/firestore";
+import { useAuth } from "../../context/AuthContext";
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../../Context/AuthContext";
-import { db } from "../Firebase/firebase";
-import { AiOutlineDelete } from "react-icons/Ai";
+import { db } from "../../Firebase/firebase";
 
 export function Home() {
-  const { logout, loading, user } = useAuth();
-  //console.log(user);
+  const { logout, user } = useAuth();
 
   const handleLogout = async () => {
     try {
       await logout();
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
   };
+
   //----------------------CRUD------------------------
   const [products, setProducts] = useState([]);
   const productCollection = collection(db, "productos");
@@ -51,12 +50,14 @@ export function Home() {
   };
 
   const deleteProduct = async (id) => {
+    console.log(id);
     const ProductDoc = doc(db, "productos", id);
-    const confirmDelete = confirm(
-      `Are you sure you want to eliminate this product? ${id}`
-    );
+    // const confirmDelete = confirm(
+    //   `Are you sure you want to eliminate this product? ${id}`
+    // );
 
-    confirmDelete ? await deleteDoc(ProductDoc) : null;
+    // confirmDelete ? await deleteDoc(ProductDoc) : null;
+    await deleteDoc(ProductDoc);
   };
 
   const handleCreate = (e) => {
@@ -128,11 +129,13 @@ export function Home() {
             <p>{product.marca}</p>
             <p>{product.precio}</p>
 
-            <AiOutlineDelete
+            <button
               onClick={() => {
                 deleteProduct(product.id);
               }}
-            ></AiOutlineDelete>
+            >
+              Delete
+            </button>
           </div>
         );
       })}

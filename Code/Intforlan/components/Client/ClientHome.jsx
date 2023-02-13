@@ -1,13 +1,10 @@
 import "./style.css";
 import React, { useEffect, useState } from "react";
-import { listCategories } from "../../Context/listCategories";
+import { listCategories } from "../../context/listCategories";
 import Card from "react-bootstrap/Card";
-import { ClientProducts } from "./ClientProducts";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function ClientHome() {
-  const navigate = useNavigate();
-
   return (
     <div>
       <h1>Welcome to Intforlan</h1>
@@ -32,14 +29,8 @@ export function ClientHome() {
                   {category.description}
                 </Card.Text>
                 <br />
-                <button
-                  onClick={() => {
-                    <ClientProducts
-                      categoryProduct={category.category}
-                    ></ClientProducts>;
-                  }}
-                >
-                  View Products
+                <button>
+                  <Link to={`/products/${category.category}`}>See all</Link>
                 </button>
               </Card.Body>
             </Card>
