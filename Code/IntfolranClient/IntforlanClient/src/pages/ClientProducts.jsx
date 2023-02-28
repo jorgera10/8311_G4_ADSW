@@ -5,9 +5,13 @@ import { collection, getDocs } from "firebase/firestore";
 import { PageTitle, Footer } from "@/widgets/layout";
 import { Typography } from "@material-tailwind/react";
 import { element } from "prop-types";
+import Button from "react-bootstrap/Button";
+import { MyVerticallyCenteredModal } from "./Modal";
 
 export function ClientProducts() {
   console.log(useParams());
+
+  const [modalShow, setModalShow] = React.useState(false);
 
   const { category } = useParams();
 
@@ -47,30 +51,43 @@ export function ClientProducts() {
           <PageTitle heading={category}> </PageTitle>
           <div className="mt-24 grid grid-cols-1 gap-12 gap-x-24 md:grid-cols-2 xl:grid-cols-4">
             {products.map((product) => {
-              if (product.categoria === category.toLowerCase()) {
+              if (product.categoria.toLowerCase() === category.toLowerCase()) {
                 return (
-                  <div key={product.id} className="container">
-                    <img src={product.imagen} height="100px" />
-                    <div className="p-5">
-                      <h2>
-                        <center>
-                          <b>{product.productName}</b>
-                        </center>
-                      </h2>
-                      <p>Marca: {product.marca}</p>
-                      <p className="text-green-600">
-                        Precio: {product.precio}$
-                      </p>
-                      {product.hasOwnProperty("valorOferta") ? (
-                        <p className="text-red-600">
-                          -{product.valorOferta}% paga:{" "}
-                          <b>
-                            {product.precio -
-                              product.precio * (product.valorOferta / 100)}
-                            $!!
-                          </b>
+                  <div key={product.id}>
+                    <div className="container">
+                      <img
+                        src={product.imagen}
+                        height="100px"
+                        onClick={() => setModalShow(product.id)}
+                        className="cursor-pointer"
+                      />
+                      <div className="p-5">
+                        <h2>
+                          <center>
+                            <b>{product.nombre}</b>
+                          </center>
+                        </h2>
+                        <p>Marca: {product.marca}</p>
+                        <p className="text-green-600">
+                          Precio: {product.precio}$
                         </p>
-                      ) : null}
+                        {product.hasOwnProperty("valorOferta") ? (
+                          <p className="text-red-600">
+                            -{product.valorOferta}% paga:{" "}
+                            <b>
+                              {product.precio -
+                                product.precio * (product.valorOferta / 100)}
+                              $!!
+                            </b>
+                          </p>
+                        ) : null}
+                      </div>
+                      <MyVerticallyCenteredModal
+                        key={product.key}
+                        {...product}
+                        show={modalShow === product.id}
+                        onHide={() => setModalShow(false)}
+                      />
                     </div>
                   </div>
                 );

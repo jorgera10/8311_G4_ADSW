@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  // apiKey: "AIzaSyDHHmLGgPKabchX8uSfpYsLLeacgk82pBs",
-  // authDomain: "intforlan-28796.firebaseapp.com",
-  // projectId: "intforlan-28796",
-  // storageBucket: "intforlan-28796.appspot.com",
-  // messagingSenderId: "195729508886",
-  // appId: "1:195729508886:web:d7c35db4ecee002c588337",
+  apiKey: "AIzaSyDHHmLGgPKabchX8uSfpYsLLeacgk82pBs",
+  authDomain: "intforlan-28796.firebaseapp.com",
+  projectId: "intforlan-28796",
+  storageBucket: "intforlan-28796.appspot.com",
+  messagingSenderId: "195729508886",
+  appId: "1:195729508886:web:d7c35db4ecee002c588337",
 
   // apiKey: "AIzaSyAzVDl1mb4m7DR0QisdrgC18NARcgOJ9Hc",
   // authDomain: "intforlan1-daf47.firebaseapp.com",
@@ -31,12 +31,12 @@ const firebaseConfig = {
   // messagingSenderId: "866589699",
   // appId: "1:866589699:web:f5c76a58618058821d4236"
 
-  apiKey: "AIzaSyBPGfMGaxAvz307A-lvqNTD8QqHxISGmxk",
-  authDomain: "intforlan4.firebaseapp.com",
-  projectId: "intforlan4",
-  storageBucket: "intforlan4.appspot.com",
-  messagingSenderId: "266497909502",
-  appId: "1:266497909502:web:8bffb7f3eff2faffda7baf",
+  // apiKey: "AIzaSyBPGfMGaxAvz307A-lvqNTD8QqHxISGmxk",
+  // authDomain: "intforlan4.firebaseapp.com",
+  // projectId: "intforlan4",
+  // storageBucket: "intforlan4.appspot.com",
+  // messagingSenderId: "266497909502",
+  // appId: "1:266497909502:web:8bffb7f3eff2faffda7baf",
 };
 
 // Initialize Firebase

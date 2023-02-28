@@ -11,6 +11,7 @@ import { db } from "../../Firebase/firebase";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import { MyVerticallyCenteredModal } from "./Modal";
 
 export function Home() {
   const { logout, user } = useAuth();
@@ -27,13 +28,26 @@ export function Home() {
   const [products, setProducts] = useState([]);
   const productCollection = collection(db, "productos");
   const [isChecked, setIsChecked] = useState(false);
+  const [modalShow, setModalShow] = React.useState(false);
 
-  const [NewNameProduct, setNewNameProduct] = useState("");
-  const [NewCategoria, setNewCategoria] = useState("");
+  const [NewName, setNewName] = useState("");
   const [NewMarca, setNewMarca] = useState("");
+  const [NewCategoria, setNewCategoria] = useState("");
+  const [peso, setPeso] = useState("");
+  const [modelo, setModelo] = useState("");
+  const [memoria, setMemoria] = useState("");
+  const [Almacenamiento, setAlmacenamiento] = useState("");
+  const [Ranura, setRanura] = useState("");
+  const [Pantalla, setPantalla] = useState("");
+  const [Resolucion, setResolucion] = useState("");
+  const [CamaraPrincipal, setCamaraPrincipal] = useState("");
+  const [CamaraSecundaria, setCamaraSecundaria] = useState("");
+  const [Sistema, setSistema] = useState("");
+  const [Bateria, setBateria] = useState("");
+  const [Color, setColor] = useState("");
   const [NewPrecio, setNewPrecio] = useState(0);
   const [NewImagen, setNewImagen] = useState("");
-  const [NewOferta, setNewOferta] = useState(10);
+  const [NewOferta, setNewOferta] = useState(0);
 
   const handleOnChange = () => {
     setIsChecked(!isChecked);
@@ -49,9 +63,21 @@ export function Home() {
 
   const createProduct = async () => {
     await addDoc(productCollection, {
-      productName: NewNameProduct,
-      categoria: NewCategoria,
+      nombre: NewName,
       marca: NewMarca,
+      categoria: NewCategoria,
+      Peso: peso,
+      Modelo: modelo,
+      Memoria: memoria,
+      Almacenamiento: Almacenamiento,
+      Ranura: Ranura,
+      Pantalla: Pantalla,
+      Resolucion: Resolucion,
+      CamaraPrincipal: CamaraPrincipal,
+      CamaraSecundaria: CamaraSecundaria,
+      Sistema: Sistema,
+      Bateria: Bateria,
+      Color: Color,
       precio: NewPrecio,
       imagen: NewImagen,
       valorOferta: NewOferta,
@@ -97,29 +123,20 @@ export function Home() {
         <input
           required
           type="text"
-          id="productName"
-          name="productName"
-          placeholder="Product name"
+          id="ewName"
+          name="ewName"
+          placeholder="ewName"
           onChange={(e) => {
-            setNewNameProduct(e.target.value);
+            setNewName(e.target.value);
           }}
           className="m-10 border-l-4 text-black"
         />
         <input
           required
           type="text"
-          name="categoria"
-          placeholder="Categoria"
-          onChange={(e) => {
-            setNewCategoria(e.target.value);
-          }}
-          className="m-10 border-l-4 text-black"
-        />
-        <input
-          required
-          type="text"
-          name="marca"
-          placeholder="Marca"
+          id="wMarca"
+          name="wMarca"
+          placeholder="wMarca"
           onChange={(e) => {
             setNewMarca(e.target.value);
           }}
@@ -128,7 +145,151 @@ export function Home() {
         <input
           required
           type="text"
-          name="precio"
+          id="egoria"
+          name="egoria"
+          placeholder="Productegoria"
+          onChange={(e) => {
+            setNewCategoria(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="etPeso"
+          name="etPeso"
+          placeholder="etPeso"
+          onChange={(e) => {
+            setPeso(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="Modelo"
+          name="Modelo"
+          placeholder="Modelo"
+          onChange={(e) => {
+            setModelo(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="emoria"
+          name="emoria"
+          placeholder="emoria"
+          onChange={(e) => {
+            setMemoria(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="miento"
+          name="miento"
+          placeholder="Product"
+          onChange={(e) => {
+            setAlmacenamiento(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="Ranura"
+          name="Ranura"
+          placeholder="Ranura"
+          onChange={(e) => {
+            setRanura(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="ntalla"
+          name="ntalla"
+          placeholder="ntalla"
+          onChange={(e) => {
+            setPantalla(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="lucion"
+          name="lucion"
+          placeholder="lucion"
+          onChange={(e) => {
+            setResolucion(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="ncipal"
+          name="ncipal"
+          placeholder="Product namencipal"
+          onChange={(e) => {
+            setCamaraPrincipal(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="ndaria"
+          name="ndaria"
+          placeholder="Product namendaria"
+          onChange={(e) => {
+            setCamaraSecundaria(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="istema"
+          name="istema"
+          placeholder="istema"
+          onChange={(e) => {
+            setSistema(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="ateria"
+          name="ateria"
+          placeholder="ateria"
+          onChange={(e) => {
+            setBateria(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="tColor"
+          name="tColor"
+          placeholder="tColor"
+          onChange={(e) => {
+            setColor(e.target.value);
+          }}
+          className="m-10 border-l-4 text-black"
+        />
+        <input
+          required
+          type="text"
+          id="Precio"
+          name="Precio"
           placeholder="Precio"
           onChange={(e) => {
             setNewPrecio(e.target.value);
@@ -138,7 +299,8 @@ export function Home() {
         <input
           required
           type="text"
-          name="imagen"
+          id="Imagen"
+          name="Imagen"
           placeholder="Imagen"
           onChange={(e) => {
             setNewImagen(e.target.value);
@@ -195,12 +357,17 @@ export function Home() {
                 border="primary"
               >
                 <Card.Header>
-                  <img src={product.imagen} height="100px" />
+                  <img
+                    className="cursor-pointer"
+                    src={product.imagen}
+                    height="100px"
+                    onClick={() => setModalShow(product.id)}
+                  />
                 </Card.Header>
                 <Card.Body>
                   <Card.Text>
                     <p className="text-green-600">
-                      <b>{product.productName}</b>
+                      <b>{product.nombre}</b>
                     </p>
                     <p className="text-green-600">
                       categoria: {product.categoria}
@@ -242,6 +409,12 @@ export function Home() {
                   >
                     Actualizar
                   </button>
+                  <MyVerticallyCenteredModal
+                    key={product.key}
+                    {...product}
+                    show={modalShow === product.id}
+                    onHide={() => setModalShow(false)}
+                  />
                 </Card.Body>
               </Card>
             );
